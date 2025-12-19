@@ -101,41 +101,28 @@ régulièrement malgré tout:
 
 * L'écosysteme huggingface: transformers, datasets, accelerate, peft,
     bitsandbytes
-
 * unsloth pour le fine tuning de llm génératifs (adapters QLoRa & sauvegarde
     mergées en GGUF pour inférence locale)
-
 * ONNX runtime: pour optimiser l'inférence de certains modèles. (Attention:
     c'est bien, mais parfois un peu fragile ou difficile à faire fonctionner).
-
 * Ollama: Fait le serving de LLM quantisés. C'est **le plus simple à utiliser
     et je te conseille de continuer avec ça**.
-
 * Langchain: pour abstraire les interactions LLM, intégrer des outils externes
     (eg. pour la collecte et chunking des données), pour le post-processing 
     avant ingest dans la vector DB
-
 * Langgraph: pour concevoir, organiser et orchestrer des flux complexes
     d'interaction avec LLM
-
 * Langsmith: pour observer les résultats, évaluer les prompts et diagnostiquer
     les erreurs
-
 * Postgres + [PgVector](https://github.com/pgvector/pgvector): Vector Database
     assez robuste
-
 * ChromaDB: Vector Database assez light. Parfaite pour prototyper en local
-
 * Docker-Compose & Docker: pour éviter les dependency hell & faciliter le
     déploiement de systemes comprenant plusieurs sous-systtemes.
-
 * [uv](https://github.com/astral-sh/uv): gestion de projet & dépendances
     efficace en python.
-
 * React pour tout ce qui est développement frontend un peu avancé
-
 * Streamlit pour offrir un prototype de frontend avec très peu d'efforts.
-
 * Labelbox pour organiser la création de corpus taggués par des collaborateurs
     non-techniciens
 
@@ -219,12 +206,12 @@ déployer l'application partout sans être confronté à des problèmes
 liés à des versions incompatibles entre elles etc...
 
 **Notes importantes** 
-* i) Il est généralement plus simple de travailler directement sous linux
+1. Il est généralement plus simple de travailler directement sous linux
     que depuis une machine Windows.
-* ii) Si tu as accès à un GPU sur la machine que tu utilises pour déployer
-    ai-rchivist, tu devras alors installer le toolkit nvidia pour docker
-    (https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
-* iii) Si tu n'as vraiment accès à aucun GPU sur la machine que tu 
+2. Si tu as accès à un GPU sur la machine que tu utilises pour déployer
+    ai-rchivist, tu devras alors installer le 
+    [toolkit nvidia pour docker](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
+3. Si tu n'as vraiment accès à aucun GPU sur la machine que tu 
     comptes utiliser pour déployer ai-rchivist, il te faudra supprimer
     les lignes suivantes dans le fichier `compose.yml`
 
