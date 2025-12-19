@@ -1,131 +1,13 @@
 # Vade Mecum pour la reprise de Arkey
 
-Bonjour à toi qui vient de prendre le relai sur le projet ARKEY.  Le but de 
-ces quelques lignes n'est certainement pas de te dire quoi faire ou comment 
-le faire. Mon but est simplement de te présenter ce qui a déjà été fait, ce
-que j'avais en tête de faire avant mon départ et les ressources que j'ai 
-trouvé utiles pour pouvoir avancer sur le projet. Bref, mon but est simplement
-de te permettre de démarrer plus facilement et de pouvoir réutiliser mes 
-travaux précédents si tu le souhaites.
-
-## Resources Utiles
-Avant de commencer à décrire ce qui a été fait, comment ça a été fait etc, 
-je vais commencer par te donner une série de pointeurs vers des ressources et
-outils que tu pourrais vouloir consulter (et que j'ai trouvé super utiles pour
-ma part). Si tu consultes ce document plusieurs fois, j'imagine que c'est la
-section que tu voudras trouver en 1er.
-
-### Les ressources que j'ai trouvé utiles sont les suivantes:
-
-* "Natural Language Processing" 
-    ([spécialisation sur coursera](https://www.coursera.org/specializations/natural-language-processing))
-
-* "Natural Language Processing with Transformers", 
-    Lewis Tunstall, Leandro von Werra, and Thomas Wolf -- O'Reilly, 2022. 
-    ISBN: 978-1-09813-679-6
-
-* "Quantization Fundamentals with Hugging Face" 
-    ([short course gratuit](https://learn.deeplearning.ai/courses/quantization-fundamentals?startTime=0) sur deeplearning.ai)
-
-* "Quantization in Depth" 
-    (encore un [short course gratuit](https://learn.deeplearning.ai/courses/quantization-in-depth?startTime=0) sur deeplearning.ai)
-
-* "LLM Engineer's Handbook", 
-    Paul Iusztin, and Maxime Labonne -- Packt, 2024. 
-    ISBN: 978-1-83620-007-9
-
-* "Learning Langchain",
-    Mayo Oshin, and Nuno Campos -- O'Reilly, 2025. 
-    ISBN: 978-1-83620-007-9
-
-* ["Let's build ChatGPT: from scratch, in code, spelled out", Andrej Karpathyi](https://youtu.be/kCc8FmEb1nY?si=UX62dTXIQLsBQ4rr)
-
-* [La documentation de sentence-transformers](https://sbert.net/)
-
-* "Speech and Language Processing. (2nd ed)", 
-    Dan Jurafsky, and James H. Martin -- Pearson, 2009. 
-    ISBN: 978-0135041963. 
-    
-    Celui-ci reste une excellente référence même s'il commence à vieillir un 
-    peu.
-
-
-### Leaderboards & benchmarks
-
-* [MMLU Leaderboard](https://www.kaggle.com/benchmarks/open-benchmarks/mmlu) 
-    Pour comparer "à la grosse louche" la performance attendue de LLM génératifs
-
-* [MTEB Leaderboard](https://huggingface.co/spaces/mteb/leaderboard)
-    Pour comparer et choisir les modèles d'embedding à tester.
-
-* [IFEval Leaderboard](https://huggingface.co/spaces/Krisseck/IFEval-Leaderboard)
-    Pour comparer la performance de modèles en matière d'instruction following 
-    (encore plus nécessaire comme on travaille avec de petits modèles)
-
-* [Alpaca Eval](https://tatsu-lab.github.io/alpaca_eval/) 
-    Idem (même si je l'ai moins utilisé).
-
-* [GAIA Leaderboard](https://huggingface.co/spaces/gaia-benchmark/leaderboard). 
-    Finalement je n'ai pas utilisé ce LB là car les tools fournis on top of 
-    AGATHA sont trop complexes (même en branchant gemini-3-pro-preview). 
-    Ma solution a donc consisté découper le travail en petites tâches et de
-    les orchestrer avec langgraph.
-
-**Et aussi _of course_**:
-* La documentation de huggingface
-* La documentation de langchain et langgraph
-* La documentation de Ollama (très pratique pour prototyper)
-
-
-### Moins directement lié
-Parmi les ressources moins directement liées au NLP, mais que je re-consulte
-régulièrement malgré tout: 
-
-* "Hands-on Machine Learning with Scikit-Learn, Keras & Tensorflow (3rd ed)", 
-    Aurélien Géron -- O'Reilly, 2025. 
-    ISBN: 978-1-098-12597-4
-
-* "Fluent Python (2nd ed)", 
-    Luciano Ramalho -- O'Reilly, 2022. 
-    ISBN: 978-1-492-05635-5
-
-* "Analyse de données avec Python", 
-    Wes McKinney -- O'Reilly, 2021. 
-    ISBN: 978-2-41206-918-9
-
-* "Deep Learning" ([spécialisation sur coursera](https://www.coursera.org/specializations/deep-learning))
-
-
-
-## Outils qui m'ont été les plus utiles
-
-* L'écosysteme huggingface: transformers, datasets, accelerate, peft,
-    bitsandbytes
-* unsloth pour le fine tuning de llm génératifs (adapters QLoRa & sauvegarde
-    mergées en GGUF pour inférence locale)
-* ONNX runtime: pour optimiser l'inférence de certains modèles. (Attention:
-    c'est bien, mais parfois un peu fragile ou difficile à faire fonctionner).
-* Ollama: Fait le serving de LLM quantisés. C'est **le plus simple à utiliser
-    et je te conseille de continuer avec ça**.
-* Langchain: pour abstraire les interactions LLM, intégrer des outils externes
-    (eg. pour la collecte et chunking des données), pour le post-processing 
-    avant ingest dans la vector DB
-* Langgraph: pour concevoir, organiser et orchestrer des flux complexes
-    d'interaction avec LLM
-* Langsmith: pour observer les résultats, évaluer les prompts et diagnostiquer
-    les erreurs
-* Postgres + [PgVector](https://github.com/pgvector/pgvector): Vector Database
-    assez robuste
-* ChromaDB: Vector Database assez light. Parfaite pour prototyper en local
-* Docker-Compose & Docker: pour éviter les dependency hell & faciliter le
-    déploiement de systemes comprenant plusieurs sous-systtemes.
-* [uv](https://github.com/astral-sh/uv): gestion de projet & dépendances
-    efficace en python.
-* React pour tout ce qui est développement frontend un peu avancé
-* Streamlit pour offrir un prototype de frontend avec très peu d'efforts.
-* Labelbox pour organiser la création de corpus taggués par des collaborateurs
-    non-techniciens
-
+Bonjour à toi qui vient de prendre le relai sur le projet ARKEY.  Le but de ces
+quelques lignes n'est certainement pas de te dire quoi faire ou comment le
+faire. Mon but est simplement de te présenter ce qui a déjà été fait, ce que
+j'avais en tête de faire avant mon départ et les
+[ressources](./ressources_utiles.md) que j'ai trouvé utiles pour pouvoir
+avancer sur le projet. Bref, mon but est simplement de te permettre de démarrer
+plus facilement et de pouvoir réutiliser mes travaux précédents si tu le
+souhaites.
 
 ## Ce qui a été fait
 
