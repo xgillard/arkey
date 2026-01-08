@@ -147,10 +147,15 @@ d'avoir recours à un LLM (pas forcément un gros, pas forcément puissant, mais
 
 #### Note technique à posteriori
 
-A posteriori, je conseillerais de plutot réimplémenter le projet en utilisant
-l'écosysteme de langchain. Une fois qu'on connait les autres bibliothèques c'est
-super simple et comme les interfaces sont standardisées ca permet de changer 
-plus facilement des modules sans tout casser.
+A posteriori, je conseillerais de plutot réimplémenter le backend en utilisant
+l'écosysteme de [langchain](https://www.langchain.com/). Une fois qu'on connait
+les autres bibliothèques c'est super simple et comme les interfaces sont
+standardisées ca permet de changer plus facilement des modules sans tout
+casser.
+
+Pour l'interface utilisateur, je conseillerais probablement de se tourner vers
+[streamlit](streamlit.io). C'est moins léger, moins snappy, mais ca permet de
+faire une ui acceptable sans y investir trop d'efforts.
 
 
 
