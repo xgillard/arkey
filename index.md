@@ -25,15 +25,15 @@ travaillé sur les sujets suivants:
 En pratique, la poursuite des deux objectifs mentionnés ici au dessus m'a 
 permis de développer les artefacts (datasets, outils, ...) suivants:
 
-* [un corpus de textes anciens](./corpus_textes_anciens.md)
-* [AI-rchivist](./ai_rchivist.md), une interface web pour l'extraction de données.
-* [Expériences consécutives à AI-rchivist](./experiences_airchivist.md)
+* Résultats liés à l'objectif 1 (comparaison LLM vs modèles task-specific)
+  - [un corpus de textes anciens](./corpus_textes_anciens.md)
+  - [AI-rchivist](./ai_rchivist.md), une interface web pour l'extraction de données.
+  - [Expériences consécutives à AI-rchivist](./experiences_airchivist.md)
 
+* Résultats liés à l'objectif 2 (plateformes rag)
+  - [rag fial](./rag_fial.md) 
+  - **TODO** [agr agent](./agr_agent.md)
+  - **TODO** [digita](./digita.md)
 
-## Encore à expliquer
-
-* [rag fial](./rag_fial.md) 
-* [agr agent](./agr_agent.md)
-* [digita](./digita.md)
-
-* [labo ia & archives](./labo.md)
+* Autres productions
+  - [labo ia & archives](./labo.md)
