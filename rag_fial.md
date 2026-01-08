@@ -22,7 +22,7 @@ archives.
 
 Dans ce contexte, un prototype de plateforme RAG a été développé. Tout le code
 de celui ci est disponible publiquement sur le repo github
-[xgillard/rag](https://github.com/xgillard/rag). Ce repository (et le code)
+[xgillard/rag](https://github.com/xgillard/rag/tree/main/uclouvain). Ce repository (et le code)
 sont normalement assez largement documentés donc il devrait être assez facile
 de s'y replonger. Voici toutefois un bref apperçu de la structure de ce qui a
 été fait.
@@ -33,13 +33,13 @@ commande `docker-compose up` (comme si le projet était un monolithe).
 
 L'architecture comprend 3+1 services distincts: 
 
-1. [database](https://github.com/xgillard/rag/uclouvain/database) qui fournit 
+1. [database](https://github.com/xgillard/rag/tree/main/uclouvain/database) qui fournit 
     une vector database basée sur postgres (+pgvector) permettant de stocker
     les chunks de textes et leurs embeddings. C'est cette base de données qui
     rend possible la recherche sémantique au sein du corpus de documents qui 
     a été traité.
 
-2. [backend](https://github.com/xgillard/rag/uclouvain/backend) qui implémente
+2. [backend](https://github.com/xgillard/rag/tree/main/uclouvain/backend) qui implémente
     la logique du RAG. Il s'agit d'un microservice implémenté en python avec
     [FastAPI](https://fastapi.tiangolo.com/) et qui expose les endpoints suivants:
     - **/chunks** qui sert plus à réaliser le chunking d'un document uploadé.
@@ -53,7 +53,7 @@ L'architecture comprend 3+1 services distincts:
         aussi une réponse à la question posée en utilisant les résultats trouvés
         dans la database.
 
-3. [frontend](https://github.com/xgillard/rag/uclouvain/frontend) qui
+3. [frontend](https://github.com/xgillard/rag/tree/main/uclouvain/frontend) qui
    implémente une petite interface utilisateur en react afin de rendre le
     système utilisable pour un utilisateur non technique.
 
@@ -75,7 +75,7 @@ encode tout ce qu'il faut pour réaliser la génération en utilisant
 [ONNX Runtime](https://onnxruntime.ai/).
 
 La codebase contient aussi un service
-[tunnelling](https://github.com/xgillard/rag/uclouvain/tunnelling). Ce service
+[tunnelling](https://github.com/xgillard/rag/tree/main/uclouvain/tunnelling). Ce service
 n'apporte en fait rien du tout au prototype. C'est juste un faux service que
 j'utilisais pendant le développement afin de pouvoir me brancher directement
 sur la database contenant les documents chunked et embedded sans avoir à les
