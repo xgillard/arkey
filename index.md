@@ -27,4 +27,6 @@ permis de développer les artefacts (datasets, outils, ...) suivants:
 
 * [un corpus de textes anciens](./corpus_textes_anciens.md)
 * [AI-rchivist](./ai_rchivist.md), une interface web pour l'extraction de données.
-* [Expériences comparative entre Prompt engineering et ML classique](./experiences_airchivist.md)
+* [Expériences consécutives à AI-rchivist](./experiences_airchivist.md)
+
+
