@@ -30,3 +30,10 @@ permis de développer les artefacts (datasets, outils, ...) suivants:
 * [Expériences consécutives à AI-rchivist](./experiences_airchivist.md)
 
 
+## Encore à expliquer
+
+* [rag fial](./rag_fial.md) 
+* [agr agent](./agr_agent.md)
+* [digita](./digita.md)
+
+* [labo ia & archives](./labo.md)

@@ -5,7 +5,7 @@ comparer la performance des modèles génératifs avec la performance des modèl
 de NLP plus classiques (BERT / RoBERTa) pour l'extraction d'entités nommées
 (personnes, lieux, dates).
 
-#### Interface Web
+## Interface Web
 
 J'ai préparé une petite interface web
 [ai-rchivist](https://github.com/xgillard/ai-rchivist) qui permette de demander
@@ -44,7 +44,9 @@ stopper les trois conteneurs nécessaires. Cela permet aussi de pouvoir
 déployer l'application partout sans être confronté à des problèmes
 liés à des versions incompatibles entre elles etc...
 
-**Notes importantes** 
+
+### Notes importantes
+
 1. Il est généralement plus simple de travailler directement sous linux
     que depuis une machine Windows.
 2. Si tu as accès à un GPU sur la machine que tu utilises pour déployer

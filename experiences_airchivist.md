@@ -131,7 +131,7 @@ sur base de cette expérience et du résultat du modele à effets mixtes
 car la participation à cette partie de l'expérience s'est avérée 
 bien trop faible même si le résultat du test est positif (2 évaluateurs).
 
-#### Code et Résultats
+### Code et Résultats
 
 Le code que j'ai écrit durant ma phase de collecte, d'exploration des
 données, le code que j'ai utilisé pour l'entrainement des modèles (que j'ai
