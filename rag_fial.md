@@ -105,7 +105,7 @@ Ce qui en est ressorti, c'est que:
 
 Depuis cette réunion, il n'y a plus eu aucun progrès sur ce prototype et mon 
 attention s'est portée sur le problème de la mailbox digit des archives
-([agr_agent](./agr_agent.md), [digita](./digita.md)).
+([ask agatha](./ask_agatha.md), [digita](./digita.md)).
 
 
 ## Mon avis a posteriori à propos du prototype
