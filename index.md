@@ -33,14 +33,14 @@ permis de développer les artefacts (datasets, outils, ...) suivants:
 * **Résultats liés à l'objectif 2 (plateformes rag)**
   - [rag fial](./rag_fial.md) 
   - [ask agatha](./ask_agatha.md) 
-  - [digita](./digita.md) **TODO** 
+  - [digita](./digita.md)
 
 
 * **Autres productions**
   - [labo ia & archives](./labo.md)
 
 
-## Ce que je pensais encore faire 
+## Ce que je pensais encore faire (expliquer plus en détails)
 
 Les prochaines étapes que je comptais entreprendre avant de quitter le projet
 Arkey sont les suivantes:
