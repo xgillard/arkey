@@ -152,4 +152,69 @@ avec les données sensibles qui sont manipulées**.
 
 ## Modèle agentique
 
-TODO
+Fort de mon expérience avec la bibliothèque de crewai, j'ai voulu expérimenter
+un modèle qui soit plus agentique (sans être vraiment une _crew_ d'agents
+multiples). J'ai aussi voulu faire en sorte que le système soit capable de
+mener de vraies recherches, en exploitant les données qui sont effectivement
+disponibles dans les collections des archives (comprendre les collections
+numérisées et rendues publiquement disponibles au travers de AGATHA).
+
+
+### Le code
+
+Tout le code pour ce nouveau workflow est disponible sur le repository
+[xgillard/agr_agent](https://github.com/xgillard/agr_agent/). Dans ce repo, 
+on trouve toute une série de fichiers à la racine. Ceux-ci ne sont pas vraiment
+intéressants, ils sont surtout un side-effect (indésirable mais néanmoins utile)
+de la labelisation manuelle que j'ai réalisé pour classifier les emails.
+On y trouve aussi:
+
+* [le fichier arkey_demo.py](https://github.com/xgillard/agr_agent/blob/main/arkey_demo.py)
+  qui implémente une interface utilisateur simple pour interagir avec l'agent.
+  Cette interface utilisateur est réalisée avec streamlit.
+
+* [le dossier corpus](https://github.com/xgillard/agr_agent/tree/main/corpus)
+  qui, comme son nom ne l'indique pas vraiment, contient une série de notebooks
+  que j'ai utilisé pour faire de l'augmentation de données en vue de
+  ré-équilibrer le dataset (utile si on veut entrainer un classifier pour choisir
+  le bon outil à utiliser).
+
+* [le package agents](https://github.com/xgillard/agr_agent/tree/main/agents) 
+  qui est un package python contenant tout le code nécessaire à l'interaction
+  avec agatha et avec le llm. **C'EST ICI QUE SE TROUVE LE COEUR INTERESSANT
+  DU SYSTEME**.
+
+
+#### Structure du package 'agents'
+
+Dans ce package, on trouve deux sous modules: 
+
+* [agents.local_llm](https://github.com/xgillard/agr_agent/tree/main/agents/local_llm)
+  qui implémente la logique des flux d'interactions avec les LLM (= les graphes
+  et sous graphes implémentés avec langgraph). C'est donc ici qu'on organise
+  l'information qui va être mémorisée dans le contexte. C'est ici aussi qu'on 
+  orchestre l'exécution des différentes tâches d'interaction avec le (ou les)
+  LLM et qu'on route la requête d'un sous-système à un autre.
+
+* [agents.tools](https://github.com/xgillard/agr_agent/tree/main/agents/tools)
+  qui implémente la logique nécessaire à l'utilisation d'un outil / moteur de
+  recherche offert par la plateforme agatha.
+
+
+#### Note à propos des outils
+
+Il est important de noter que bien que le package s'appelle 'tools' et que 
+fonctionnellement il offre le même service qu'une collection d'outils (`@tool`),
+ce code ne fournit aucun "outil" directement géré et mis à la disposition du
+LLM dans une boucle ReAct.
+
+En effet, les outils offerts par Agatha sont trop complexes et offrent trop 
+d'options différentes (mais qui doivent rester cohérentes entre elles si on
+veut obtenir un résultat) afin de pouvoir être gérés directement par un `@tool`.
+Les outils sont donc découpés en deux parties: la partie qui fait l'interaction
+pure avec agatha (et dont on trouve l'implémentation dans `agents.tools`) et
+la partie qui fait l'intégration de cet outil dans un système drivé par un LLM
+utilisé comme moteur de raisonnement. Cette seconde partie est donc constituée
+d'une série de graphes langgraph (dont on trouve le code dans `agents.local_llm`).
+
+

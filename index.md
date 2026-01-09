@@ -38,3 +38,20 @@ permis de développer les artefacts (datasets, outils, ...) suivants:
 
 * **Autres productions**
   - [labo ia & archives](./labo.md)
+
+
+## Ce que je pensais encore faire 
+
+Les prochaines étapes que je comptais entreprendre avant de quitter le projet
+Arkey sont les suivantes:
+
+* intégration du moteur lié aux inventaires (car ils sont en fait très utilisés)
+* intégration des jalons de recherche
+* utiliser xaviergillard/digita comme llm local pour la rédaction des réponses
+* faire une DPO de xaviergillard/digita pour le pousser à répondre en utilisant
+  les informations récentes (et pas les trucs qui datent d'avant l'introduction
+  de agatha).
+* alternativement, faire un finetune digita en n'utilisant que les mails de 2024
+  (et ceux de 2025 s'ils sont dispo).
+* réaliser une évaluation formelle du systeme qui a été développé.
+
