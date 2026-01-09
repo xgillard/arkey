@@ -235,6 +235,15 @@ j'ai trouvé intéressantes:
 1. L'approche "miroir" 
 2. L'approche "cascade"
 
+Mais dans les deux cas, on implémente une boucle
+[ReAct](https://docs.langchain.com/oss/python/langchain/agents) ce qui permet
+de découper la tâche à accomplir en plusieurs sous taches, d'enchainer
+plusieurs étapes et non pas de se contenter d'une seule recherche dans une DB.
+
+Par ailleurs, les deux versions du système sont toutes les deux complétées 
+par la recherche "classique" dans une vector db afin de retrouver les passages
+potentiellement intéressants dans les ressources d'aide en ligne (manuels
+de l'utilisateur, FAQ)
 
 ###### Approche "miroir"
 
