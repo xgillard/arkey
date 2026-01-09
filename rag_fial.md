@@ -107,6 +107,7 @@ Depuis cette réunion, il n'y a plus eu aucun progrès sur ce prototype et mon
 attention s'est portée sur le problème de la mailbox digit des archives
 ([agr_agent](./agr_agent.md), [digita](./digita.md)).
 
+
 ## Mon avis a posteriori à propos du prototype
 
 Je pense que ce prototype est bien trop simple et bien trop proche d'une 
@@ -158,4 +159,11 @@ Pour l'interface utilisateur, je conseillerais probablement de se tourner vers
 faire une ui acceptable sans y investir trop d'efforts.
 
 
+#### Ce qui reste intéressant malgré tout
+
+Ce qui reste intéressant malgré tout, c'est le chunking. J'ai testé pas mal
+d'approches différentes, et au final, le recursive chunking tel qu'il est
+implémenté par `RecursiveCharacterTextSplitter` est une technique qui marche
+bien parce qu'elle permet de garder des chunks qui forment des unités de sens
+cohérentes.
 

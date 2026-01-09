@@ -32,7 +32,7 @@ permis de développer les artefacts (datasets, outils, ...) suivants:
 
 * **Résultats liés à l'objectif 2 (plateformes rag)**
   - [rag fial](./rag_fial.md) 
-  - [agr agent](./agr_agent.md) **TODO** 
+  - [ask agatha](./agr_agent.md) **WIP** 
   - [digita](./digita.md) **TODO** 
 
 
