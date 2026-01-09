@@ -32,7 +32,7 @@ permis de développer les artefacts (datasets, outils, ...) suivants:
 
 * **Résultats liés à l'objectif 2 (plateformes rag)**
   - [rag fial](./rag_fial.md) 
-  - [ask agatha](./ask_agatha.md) **WIP** 
+  - [ask agatha](./ask_agatha.md) 
   - [digita](./digita.md) **TODO** 
 
 
@@ -53,5 +53,7 @@ Arkey sont les suivantes:
   de agatha).
 * alternativement, faire un finetune digita en n'utilisant que les mails de 2024
   (et ceux de 2025 s'ils sont dispo).
+* entrainer des classifiers sur base de simple "bert-like" models afin
+  de réaliser l'aiguillage des requetes plutot que d'avoir recours à des llm.
 * réaliser une évaluation formelle du systeme qui a été développé.
 

@@ -217,4 +217,59 @@ la partie qui fait l'intégration de cet outil dans un système drivé par un LL
 utilisé comme moteur de raisonnement. Cette seconde partie est donc constituée
 d'une série de graphes langgraph (dont on trouve le code dans `agents.local_llm`).
 
+> [!NOTE] 
+> Un élémnent qui est intéressant à savoir, c'est qu'une partie du code
+> "modèle" pour les schémas liés aux objets qui viennent de agatha sont en fait
+> auto générés à partir du site web de agatha lui meme.
+> 
+> En effet, le script `agents.tools.agatha2enum` est exécuté toutes les nuits
+> (github action) et parse le code source des pages d'agatha afin de générer
+> le code des énumérations nécessaires pour interagir avec la plateforme.
 
+
+##### Topologies testées
+
+Pendant mes expérimentations et la phase de développement, j'ai testé plusieurs
+approches pour le développement des outils. Il y en a essentiellement deux que
+j'ai trouvé intéressantes: 
+1. L'approche "miroir" 
+2. L'approche "cascade"
+
+
+###### Approche "miroir"
+
+Cette approche est la plus simple et elle est décrite dans l'image ci-dessous.
+On a un sous flux pour chaque moteur de recherche. Au sein de chacune ces flux,
+on va avoir une étape pour récupérer chacun des paramètres qu'on peut passer au 
+moteur de recherche lorsqu'on émet une requete. Toutes ces étapes sont exécutées
+en parallèle, puis on envoie effectivement la requête vers agatha.
+
+![approche mirroir](./agent_mapping_direct.png "Approche miroir")
+
+
+
+###### Approche "cascade"
+
+L'approche cascade est assez simple à comprendre. Elle part de l'observation 
+qu'il est beaucoup plus couteux de réaliser des étapes qui impliquent l'utilisation
+d'un LLM que de faire une ou plusieurs requêtes vers le moteur de recherche de
+agatha. Non seulement agatha permet de fonctionner en local (ok pour la privacy), 
+et donc il ne nous charge pas le prix des tokens IN-OUT, mais en plus agatha 
+répond incroyablement plus vite qu'un LLM. 
+
+Pour cette raison, l'approche que j'ai nommée "approche cascade" essaie de limiter
+les interactions llm avant de lancer une recherche sur agatha. On commence 
+toujours par récupérer une valeur pour les paramètres qui sont absolument essentiels
+puis on lance une recherche. En fonction du résultat obtenu on décide de 
+récupérer une valeur pour des parametres supplémentaires (et donc raffiner la
+recherche) ou de s'arrêter car on a trouvé des résultats qui sont déjà satisfaisants.
+
+Un autre avantage de l'approche "cascade", c'est qu'elle encourage l'utilisation
+un peu aggressive de plusieurs moteurs de recherches (par exemple les sources
+d'état civil et les registres paroissiaux) avant qu'on n'ait eu besoin de trouver
+la valeur exacte à passer à tous les paramètres. Cette approche évite aussi le
+cas (trop fréquent !) où la récupération de tous les paramètres produit une requête
+qui est **trop** précise et qui ne permet pas de retrouver le résultat escompté
+parce qu'il ya  une petite erreur dans la requête .. ou dans les données.
+
+![approche cascade](./agent_cascading.png "Approche cascade")
