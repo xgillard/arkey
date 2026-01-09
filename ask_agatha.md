@@ -35,6 +35,20 @@ dans deux formats différents:
 * **.txt** un dump en texte brut
 
 
+#### Code
+
+Tout le code de ce dont je vais parler ci dessous est disponible sur le 
+repository github [xgillard/agr_agent](https://github.com/xgillard/agr_agent).
+
+Avant d'entamer le développement de ask-agatha dont le code est dans le
+repository que je viens de mentionner
+[xgillard/agr_agent](https://github.com/xgillard/agr_agent), j'ai aussi fait
+une série d'expérimentations pendant lesquelles j'ai cherché à développer un
+premier rag qui permette de répondre à ces questions. Le code de ces premières
+expérimentations est disponible sur le repository
+[xgillard/ragagr](https://github.com/xgillard/ragagr).
+
+
 ## Chargement des emails
 
 Ma première idée a consisté à chercher un `DocumentLoader` qui soit capable de
@@ -56,6 +70,23 @@ J'ai donc changé mon fusil d'épaule et j'ai commencé à travailler avec les
 fichiers `*.txt` qui sont -- je trouve, plus facile à manipuler.
 
 
+## Exploration des données
+
+Pour me faire une idée de la teneur des données avec lesquelles j'allais 
+travailler, j'ai moi-même lu environ 300 emails et je les ai classés dans
+différentes catégories (à la main, en utilisant une instance locale de 
+labelbox). 
+
+Ce qui est ressorti de cette analyse exploratoire, c'est que le dataset est
+très fortement déséquilibré. Comme on peut le voir dans le graphe ci-dessous,
+les questions liées à l'activation des comptes représentent une fraction
+disproportionnée des requêtes. En 2e lieu arrivent les demandes de correction
+dans les données des archives, puis les autres types de requêtes (par exemple:
+rediriger l'utilisateur vers un dépôt en particulier, ou mener effectivement
+une recherche pour le compte de l'utilisateur).
+
+![exploration](./exploration_corpus_digit.png "Exploration des données")
+
 ## Embedding des emails
 
 > [!WARNING]
@@ -69,22 +100,56 @@ des embeddings pour les emails, les stocker dans la DB,
 afin de faire une recherche sémantique qui aurait pu permettre de retrouver la
 ou les réponses pertinentes avant de générer une réponse pour l'utilisateur.
 
-Comme il est nécessaire de faire un chunking pour les mails avant de pouvoir 
-calculer leur embedding, j'ai procédé en suivant la même approche que ce qui
-fonctionnait bien pour le prototype [rag fial](./rag_fial.md). A savoir: utiliser
-un chunking recursif tel qu'implémenté par `RecursiveCharacterTextSplitter`.
 
-### Code
+## Alternative: utilisation des guides et FAQ plutot que des mails
 
-Tout le code de ce dont je vais parler ci dessous est disponible sur le 
-repository github [xgillard/agr_agent](https://github.com/xgillard/agr_agent).
+Comme [AGATHA](https://agatha.arch.be) est assez bien documenté, il y a un 
+certain nombre d'informations qui peuvent être utilisées pour donner une 
+information utile à un utilisateur, même sans exploiter le corps des emails.
+Ces informations viennent de quatre sources distinctes:
 
-Avant d'entamer le développement de ask-agatha dont le code est dans le
-repository que je viens de mentionner
-[xgillard/agr_agent](https://github.com/xgillard/agr_agent), j'ai aussi fait
-une série d'expérimentations pendant lesquelles j'ai cherché à développer un
-premier rag qui permette de répondre à ces questions. Le code de ces premières
-expérimentations est disponible sur le repository
-[xgillard/ragagr](https://github.com/xgillard/ragagr).
+1. [Genealogie: par ou commencer ?](https://agatha.arch.be/help/beginning/)
+2. [Manuel utilisateur des sources généalogiques](https://agatha.arch.be/help/beginning/)
+3. [Manuel utilisateur des analyses d'actes](https://agatha.arch.be/help/Archives-de-l-Etat_manuel-utilisation-analyses-actes.pdf)
+4. [Les FAQ de AGATHA](https://agatha.arch.be/help/)
 
 
+### Chunking
+
+Comme il est nécessaire de faire un chunking des documents avant de pouvoir
+calculer leur embedding, et les stocker dans une DB vectorielle en vue de faire
+une recherche sémantique, j'ai procédé en adoptant une approche qui depend du
+type de source considérée (les FAQ ne devraient pas être traitées de la même
+façon que les manuels utilisateur). Mais pour les longs documents, j'ai utilisé
+la même approche que ce qui fonctionnait bien pour le prototype 
+[rag fial](./rag_fial.md). A savoir: utiliser un chunking récursif tel 
+que c'est implémenté par `RecursiveCharacterTextSplitter`.
+
+
+### Structure du workflow
+
+Afin d'augmenter l'efficacité de la recherche, j'ai décidé de grouper les
+informations de ces différentes sources en fonction du contenu dont elles parlent
+puis de faire la recherche dans la bonne db en fonction du contexte. Après chaque
+recherche, il devait être possible de compléter les informations en allant
+chercher des informations supplémentaires dans l'une ou l'autre source jusqu'à
+atteindre la saturation et la génération d'une réponse.
+
+Le design du systeme est donc le suivant:
+![ragagr](./ragagr.png "Design du 1e système simple")
+
+
+### Workflow alternatif avec CrewAi
+
+A titre d'expérience, j'ai fait un prototype travaillant sur les mêmes
+informations et avec [crewai](https://www.crewai.com/). Le système était très
+facile à développer (on déclare un certain nombre d'agents indépendants qui ont
+chacun un role propre et qui se coordonnent pour remplir la requete de
+l'utilisateur). **Mais malheureusement, la librairie est très solidement axée
+vers l'utilisation dun LLM hébergé dans le cloud. Ce qui n'est pas compatible
+avec les données sensibles qui sont manipulées**.
+
+
+## Modèle agentique
+
+TODO
