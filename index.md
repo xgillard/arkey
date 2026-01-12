@@ -42,7 +42,8 @@ permis de développer les artefacts (datasets, outils, ...) suivants:
 
 ## Ce que je pensais encore faire (expliquer plus en détails)
 
-Les prochaines étapes que je comptais entreprendre avant de quitter le projet
+Les prochaines étapes que je comptais (mais que je n'ai à l'heure actuelle
+pas encore eu l'occasion d') entreprendre avant de quitter le projet
 Arkey sont les suivantes:
 
 * intégration du moteur lié aux inventaires (car ils sont en fait très utilisés)
@@ -56,4 +57,3 @@ Arkey sont les suivantes:
 * entrainer des classifiers sur base de simple "bert-like" models afin
   de réaliser l'aiguillage des requetes plutot que d'avoir recours à des llm.
 * réaliser une évaluation formelle du systeme qui a été développé.
-
