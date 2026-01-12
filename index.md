@@ -46,8 +46,8 @@ Les prochaines étapes que je comptais (mais que je n'ai à l'heure actuelle
 pas encore eu l'occasion d') entreprendre avant de quitter le projet
 Arkey sont les suivantes:
 
-* intégration du moteur lié aux inventaires (car ils sont en fait très utilisés)
-* intégration des jalons de recherche
+* [intégration du moteur lié aux inventaires](./integration_inventaires.md) (probablement par là que je commencerais)
+* [intégration des jalons de recherche](./integration_jalons.md)
 * utiliser xaviergillard/digita comme llm local pour la rédaction des réponses
 * faire une DPO de xaviergillard/digita pour le pousser à répondre en utilisant
   les informations récentes (et pas les trucs qui datent d'avant l'introduction
