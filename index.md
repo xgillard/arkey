@@ -46,9 +46,9 @@ Les prochaines étapes que je comptais (mais que je n'ai à l'heure actuelle
 pas encore eu l'occasion d') entreprendre avant de quitter le projet
 Arkey sont les suivantes:
 
-* [intégration du moteur lié aux inventaires](./integration_inventaires.md) (probablement par là que je commencerais)
+* réaliser une [évaluation formelle du systeme](./evaluation.md) qui a été développé (commencer par là)
+* [intégration du moteur lié aux inventaires](./integration_inventaires.md) (sans doute la chose la plus utile à faire après l'évaluation)
 * [intégration des jalons de recherche](./integration_jalons.md)
 * utiliser [xaviergillard/digita comme llm local pour la rédaction des réponses](./digita_responses.md)
 * [entrainer des classifiers sur base de simple "bert-like" models afin
   de réaliser l'aiguillage des requetes plutot que d'avoir recours à des llm](./bert_like_routing.md)
-* réaliser une [évaluation formelle du systeme](./evaluation.md) qui a été développé.
