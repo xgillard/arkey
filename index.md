@@ -40,7 +40,7 @@ permis de développer les artefacts (datasets, outils, ...) suivants:
   - [labo ia & archives](./labo.md)
 
 
-## Ce que je pensais encore faire (expliquer plus en détails)
+## Ce que je pensais encore faire
 
 Les prochaines étapes que je comptais (mais que je n'ai à l'heure actuelle
 pas encore eu l'occasion d') entreprendre avant de quitter le projet
@@ -48,12 +48,7 @@ Arkey sont les suivantes:
 
 * [intégration du moteur lié aux inventaires](./integration_inventaires.md) (probablement par là que je commencerais)
 * [intégration des jalons de recherche](./integration_jalons.md)
-* utiliser xaviergillard/digita comme llm local pour la rédaction des réponses
-* faire une DPO de xaviergillard/digita pour le pousser à répondre en utilisant
-  les informations récentes (et pas les trucs qui datent d'avant l'introduction
-  de agatha).
-* alternativement, faire un finetune digita en n'utilisant que les mails de 2024
-  (et ceux de 2025 s'ils sont dispo).
-* entrainer des classifiers sur base de simple "bert-like" models afin
-  de réaliser l'aiguillage des requetes plutot que d'avoir recours à des llm.
-* réaliser une évaluation formelle du systeme qui a été développé.
+* utiliser [xaviergillard/digita comme llm local pour la rédaction des réponses](./digita_responses.md)
+* [entrainer des classifiers sur base de simple "bert-like" models afin
+  de réaliser l'aiguillage des requetes plutot que d'avoir recours à des llm](./bert_like_routing.md)
+* réaliser une [évaluation formelle du systeme](./evaluation.md) qui a été développé.
